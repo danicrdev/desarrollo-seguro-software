@@ -52,7 +52,7 @@ desarrollo-seguro-software/
 Clona el repositorio y accede a su directorio:
 
 ```bash
-git clone <URL_DEL_REPOSITORIO>
+git clone https://github.com/danicrdev/desarrollo-seguro-software
 cd desarrollo-seguro-software
 ```
 
