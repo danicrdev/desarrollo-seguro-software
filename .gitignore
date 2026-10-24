@@ -1,0 +1,12 @@
+gitignore
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+evidence/**/*.pcap
+evidence/**/*.pcapng
+evidence/zap/report.html
+evidence/zap/report.json

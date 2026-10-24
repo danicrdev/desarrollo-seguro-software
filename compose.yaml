@@ -1,0 +1,49 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"
+      interval: 5s
+      timeout: 5s
+      retries: 15
+
+  app:
+    build: .
+    restart: unless-stopped
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8000:8000"
+
+  zap:
+    image: ghcr.io/zaproxy/zaproxy:stable
+    profiles:
+      - security
+    network_mode: host
+    volumes:
+      - ./evidence/zap:/zap/wrk
+    entrypoint: ["zap-baseline.py"]
+    command:
+      - "-t"
+      - "http://127.0.0.1:8000"
+      - "-r"
+      - "report.html"
+      - "-J"
+      - "report.json"
+
+volumes:
+  postgres_data:
