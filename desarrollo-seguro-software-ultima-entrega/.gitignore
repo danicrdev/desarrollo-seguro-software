@@ -1,0 +1,20 @@
+.env
+certs/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+evidence/**/*.png
+evidence/**/*.pcap
+evidence/**/*.pcapng
+evidence/**/*.json
+evidence/**/*.log
+evidence/**/*.txt
+!evidence/**/.gitkeep
+# Respaldos y volcados de datos: nunca publicarlos
+*.dump
+*.backup
+*.bak
+*.sql.gz

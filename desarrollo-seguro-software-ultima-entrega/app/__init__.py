@@ -1,0 +1,1 @@
+"""Laboratorio académico de seguridad."""
