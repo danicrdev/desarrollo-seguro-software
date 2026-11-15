@@ -105,5 +105,3 @@ git add app scripts tests nginx postgres Dockerfile compose.yaml requirements.tx
 git commit -m "Implementar controles de aseguramiento y pruebas de entrega 3"
 git push -u origin aseguramiento-entrega3
 ```
-
-Nunca utilices `git add -f .env` ni agregues `certs/`. Recuerda que **la creación del código y las pruebas unitarias no acreditan por sí solas haber ejecutado las pruebas de ataque que solicita la universidad**.
